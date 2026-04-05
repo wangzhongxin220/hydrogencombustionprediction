@@ -247,6 +247,10 @@
             .cl-meta { text-align: left; }
             .warning-box { grid-template-columns: 1fr; }
             footer { flex-direction: column; text-align: center; padding: 32px 20px; }
+            .stats-bar { flex-wrap: wrap; }
+            .stat-item { flex: 0 0 50%; padding: 16px 10px; border-bottom: 1px solid var(--border); }
+            .stat-item:nth-child(even) { border-right: none; }
+            .stat-item:nth-last-child(-n+2) { border-bottom: none; }
         }
     </style>
 </head>
