@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>H₂Burn · 氢燃烧预测系统</title>
+    <title>HyBv · 氢气燃烧速度预测系统</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Noto+Sans+SC:wght@400;500;700&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
     <style>
@@ -136,6 +136,10 @@
         .dl-badge.stable      { background: rgba(16,185,129,0.1);  color: var(--green);     border: 1px solid rgba(16,185,129,0.25); }
         .dl-badge.beta        { background: rgba(245,158,11,0.1);  color: var(--amber);     border: 1px solid rgba(245,158,11,0.25); }
 
+
+        .cl-tag.internal { background: rgba(245,158,11,0.08); color: var(--amber); border: 1px solid rgba(245,158,11,0.25); }
+        .release-note { max-width: 960px; margin: -28px auto 58px; padding: 12px 18px; border: 1px solid rgba(59,130,246,0.18); border-radius: 8px; background: rgba(59,130,246,0.045); color: var(--muted); font-size: 0.88rem; line-height: 1.7; text-align: center; }
+
         .dl-os { display: flex; align-items: center; justify-content: flex-start; gap: 10px; margin-bottom: 16px; }
         .dl-os-icon { font-size: 1.7rem; line-height: 1; }
         .dl-os-name { font-family: 'Space Mono', monospace; font-size: 0.8rem; color: var(--muted); letter-spacing: 0.06em; }
@@ -247,17 +251,13 @@
             .cl-meta { text-align: left; }
             .warning-box { grid-template-columns: 1fr; }
             footer { flex-direction: column; text-align: center; padding: 32px 20px; }
-            .stats-bar { flex-wrap: wrap; }
-            .stat-item { flex: 0 0 50%; padding: 16px 10px; border-bottom: 1px solid var(--border); }
-            .stat-item:nth-child(even) { border-right: none; }
-            .stat-item:nth-last-child(-n+2) { border-bottom: none; }
         }
     </style>
 </head>
 <body>
 
 <nav>
-    <a href="#" class="nav-logo">H₂<span>//</span>Burn</a>
+    <a href="#" class="nav-logo">HyBv<span>//</span>NEU</a>
     <ul class="nav-links">
         <li><a href="#features">功能特性</a></li>
         <li><a href="#changelog">更新日志</a></li>
@@ -267,31 +267,33 @@
 </nav>
 
 <section class="hero" id="download">
-    <div class="hero-eyebrow">东北大学 · 氢 / 空气混合燃烧速度预测</div>
-    <h1>H<sub>2</sub>Burn</h1>
-    <div class="hero-subtitle">Combustion Intelligence System</div>
+    <div class="hero-eyebrow">东北大学 · 氢 / 空气预混燃烧速度预测</div>
+    <h1>HyBv</h1>
+    <div class="hero-subtitle">Hydrogen Burning Velocity Prediction System</div>
     <p class="hero-desc">
-        融合前沿机器学习算法与燃烧物理约束的工程级预测工具，提供层流火焰速度（S<sub style="font-size:0.78em">L</sub>）与湍流火焰速度（S<sub style="font-size:0.78em">T</sub>）高精度推演，专为科研与工程计算设计。
+        <strong>HyBv V4.0</strong> 是面向氢气—空气预混燃烧研究的机器学习预测软件，提供层流燃烧速度（S<sub style="font-size:0.78em">L</sub>）与湍流燃烧速度（S<sub style="font-size:0.78em">T</sub>）预测、批量推理、标况曲线、模型诊断及适用域（AD）分析功能。
     </p>
 
     <div class="download-grid" id="download-grid"></div>
 
+    <div class="release-note">当前公开版本为 <strong style="color:var(--accent-hi)">HyBv V4.0</strong>。点击 V4.0 的 GitHub Releases 下载入口即可获取安装包；V3.0 与 V2.0 为研发阶段内部调试版本，仅用于版本追踪，不提供公开下载。</div>
+
     <div class="stats-bar">
         <div class="stat-item">
-            <div class="stat-num">12+</div>
-            <div class="stat-label">候选算法</div>
+            <div class="stat-num">V4.0</div>
+            <div class="stat-label">当前正式版本</div>
         </div>
         <div class="stat-item">
             <div class="stat-num">SL / ST</div>
             <div class="stat-label">预测目标</div>
         </div>
         <div class="stat-item">
-            <div class="stat-num">R² ≥ 0.9</div>
-            <div class="stat-label">拟合精度</div>
+            <div class="stat-num">AD</div>
+            <div class="stat-label">适用域检测</div>
         </div>
         <div class="stat-item">
-            <div class="stat-num">3 级</div>
-            <div class="stat-label">置信度评级</div>
+            <div class="stat-num">SL / ST</div>
+            <div class="stat-label">双模型独立检测</div>
         </div>
     </div>
 </section>
@@ -299,7 +301,7 @@
 <section class="features-section" id="features">
     <div class="section-wrap">
         <div class="section-label">// 核心功能</div>
-        <h2 class="section-title">为工程计算而生</h2>
+        <h2 class="section-title">面向科研与工程计算</h2>
         <div class="features-grid">
             <div class="feature-cell">
                 <div class="feature-icon">⚡</div>
@@ -309,27 +311,27 @@
             <div class="feature-cell">
                 <div class="feature-icon">📊</div>
                 <div class="feature-title">CSV 批量预测</div>
-                <p class="feature-desc">支持数百组特征参数一键导入，并发推演全部样本，结果即时导出。内置可视化引擎，自动绘制标况对比特征曲线。</p>
+                <p class="feature-desc">支持标准 CSV 工况数据导入、逐行预测、进度显示与结果导出，并同步给出对应的 SL / ST 适用域状态。</p>
             </div>
             <div class="feature-cell">
                 <div class="feature-icon">🛡️</div>
-                <div class="feature-title">物理防呆机制</div>
-                <p class="feature-desc">底层算法融合严谨燃烧学物理约束，自动规避违反热力学的异常输出，对每条结果提供高 / 中 / 低三级置信度评级。</p>
+                <div class="feature-title">AD 适用域检测</div>
+                <p class="feature-desc">针对 SL 与 ST 分别建立适用域检测器，采用 KNN 距离与马氏距离进行双重判定，识别训练数据覆盖区域与外推风险。</p>
             </div>
             <div class="feature-cell">
                 <div class="feature-icon">🔬</div>
-                <div class="feature-title">多算法集成</div>
-                <p class="feature-desc">内置 LightGBM、XGBoost、随机森林、SVR 等 12+ 候选算法，自动筛选最优集成策略，兼顾精度与泛化能力。</p>
+                <div class="feature-title">标况曲线与理论对比</div>
+                <p class="feature-desc">生成 SL–φ 与 ST–u′ 标况曲线，可叠加实验数据，并按需要显示 Zimont、Peters 理论曲线进行对比分析。</p>
             </div>
             <div class="feature-cell">
                 <div class="feature-icon">📈</div>
                 <div class="feature-title">模型诊断面板</div>
-                <p class="feature-desc">内置诊断模块可查看 R²、RMSE、MAE 等多维评估指标，以及特征重要性分布图，支持深度结果溯源。</p>
+                <p class="feature-desc">内置诊断模块可查看 R²、MAE、RMSE，并生成预测—实测散点图、残差分布、Q-Q 图及分区误差分析，支持 PDF / PNG 导出。</p>
             </div>
             <div class="feature-cell">
                 <div class="feature-icon">🌡️</div>
-                <div class="feature-title">宽域工况覆盖</div>
-                <p class="feature-desc">支持大范围当量比、初始压力与温度参数组合推演，适用于发动机设计、安全评估与爆炸极限分析等多种场景。</p>
+                <div class="feature-title">物理工况范围提示</div>
+                <p class="feature-desc">通过 AD 适用域结果提示当前输入是否处于训练数据经验覆盖范围，Outside AD 工况建议结合实验或其他独立方法进一步验证。</p>
             </div>
         </div>
     </div>
@@ -364,7 +366,7 @@
 
 <footer>
     <div class="footer-left">
-        <strong>东北大学氢燃烧科研团队</strong> &nbsp;·&nbsp; &copy; 2026<br>
+        <strong>东北大学 · HyBv 氢气燃烧速度预测系统</strong> &nbsp;·&nbsp; &copy; 2026<br>
         问题反馈：<a href="mailto:wangzx10@mails.neu.edu.cn">wangzx10@mails.neu.edu.cn</a>
     </div>
     <div class="footer-right">
@@ -376,26 +378,27 @@
 <script>
 document.addEventListener("DOMContentLoaded", () => {
     const Config = {
+        // 当前正式发布版本：V4.0
+        // V3.0 / V2.0 仅作为内部调试版本展示，不作为公开下载版本。
         releases: [
             {
                 os: "Windows",
                 osIcon: "🪟",
-                version: "V1.0",
-                date: "2026-04-05",
-                size: "223 MB",
+                version: "V4.0",
+                date: "当前正式版",
+                size: "Windows Installer",
                 badge: "recommended",
-                badgeText: "推荐",
+                badgeText: "当前版本",
                 featured: true,
                 comingSoon: false,
                 links: [
                     {
-                        name: "GitHub 官方极速下载",
-                        icon: "🚀",
-                        url: "https://github.com/wangzhongxin220/hydrogencombustionprediction/releases/download/v1.0/H2Burn_V1.0_Setup.exe",
-                        code: "直连",
+                        name: "GitHub Releases · 下载 V4.0",
+                        icon: "↓",
+                        url: "https://github.com/wangzhongxin220/hydrogencombustionprediction/releases/tag/v4.0",
+                        code: "打开版本页即可下载安装包",
                         disabled: false
-                    },
-
+                    }
                 ]
             },
             {
@@ -425,22 +428,42 @@ document.addEventListener("DOMContentLoaded", () => {
         ],
         changelog: [
             {
-                version: "V1.0",
-                date: "2026-04-05",
+                version: "V4.0",
+                date: "当前正式版本",
                 isLatest: true,
                 items: [
-                    { type: "feat", text: "首次发布：支持层流（SL）与湍流（ST）燃烧速度高精度预测" },
-                    { type: "feat", text: "包含单点速算与 CSV 批量导入预测功能" },
-                    { type: "feat", text: "内置标况曲线绘图与底层模型诊断功能" },
-                    { type: "feat", text: "集成 LightGBM、XGBoost 等 12+ 候选算法自动选优" },
-                    { type: "feat", text: "物理约束层：自动过滤违背热力学的异常输出" },
-                ],
+                    { type: "feat", text: "正式版本：HyBv 氢气燃烧速度预测系统 V4.0" },
+                    { type: "feat", text: "完善层流燃烧速度（SL）与湍流燃烧速度（ST）独立预测流程" },
+                    { type: "feat", text: "新增并完善 AD 适用域分析：KNN 距离 + 马氏距离双重判定" },
+                    { type: "feat", text: "统一 AD 状态表达：Within AD / Outside AD，避免将适用域误解为预测置信度" },
+                    { type: "feat", text: "完善批量预测、标况曲线与模型诊断功能" },
+                    { type: "feat", text: "优化软件界面、安装部署及运行稳定性" }
+                ]
             },
-        ],
+            {
+                version: "V3.0",
+                date: "内部调试版本",
+                isLatest: false,
+                items: [
+                    { type: "feat", text: "内部重构与功能联调版本，仅用于研发测试" },
+                    { type: "feat", text: "验证 SL / ST 双独立 AD 检测流程及批量预测功能" },
+                    { type: "feat", text: "验证曲线平滑、模型诊断与界面交互" }
+                ]
+            },
+            {
+                version: "V2.0",
+                date: "内部调试版本",
+                isLatest: false,
+                items: [
+                    { type: "feat", text: "内部功能开发与算法验证版本" },
+                    { type: "feat", text: "用于预测流程、数据处理及软件界面的阶段性调试" }
+                ]
+            }
+        ]
     };
 
     const latestVer = Config.releases.find(r => r.featured) || Config.releases[0];
-    document.getElementById("nav-ver").textContent = `● ${latestVer.version}`;
+    document.getElementById("nav-ver").textContent = "● V4.0";
 
     const grid = document.getElementById("download-grid");
     Config.releases.forEach(r => {
@@ -465,7 +488,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     </div>`;
                 } else {
                     linksHtml += `
-                    <a href="${link.url}" target="_blank" class="dl-drive-link">
+                    <a href="${link.url}" target="_blank" rel="noopener noreferrer" class="dl-drive-link">
                         <span class="drive-name">${link.icon} ${link.name}</span>
                         ${link.code ? `<span class="drive-code">${link.code}</span>` : ""}
                     </a>`;
@@ -483,7 +506,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 <span class="dl-os-name">${r.os}</span>
             </div>
             <div class="dl-version">${r.version}</div>
-            <div class="dl-info">${r.date} &nbsp;·&nbsp; ${r.size}</div>
+            <div class="dl-info">${r.date} &nbsp;·&nbsp; ${r.size}${r.featured ? '<br><span style="font-family:Space Mono,monospace;font-size:.76rem;color:var(--accent-hi)">HyBv_V4.0_Installer.exe</span>' : ''}</div>
             ${linksHtml}
         `;
         grid.appendChild(card);
@@ -500,7 +523,7 @@ document.addEventListener("DOMContentLoaded", () => {
             <div class="cl-meta">
                 <div class="cl-version">${entry.version}</div>
                 <div class="cl-date">${entry.date}</div>
-                ${entry.isLatest ? '<span class="cl-tag latest">LATEST</span>' : ""}
+                ${entry.isLatest ? '<span class="cl-tag latest">CURRENT</span>' : '<span class="cl-tag internal">INTERNAL DEBUG</span>'}
             </div>
             <ul class="cl-items">${items}</ul>
         `;
