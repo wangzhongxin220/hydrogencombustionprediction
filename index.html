@@ -253,6 +253,15 @@
             footer { flex-direction: column; text-align: center; padding: 32px 20px; }
         }
     </style>
+
+<style id="scientific-subscript-style">
+  sub {
+    font-size: 0.72em;
+    line-height: 0;
+    vertical-align: sub;
+  }
+</style>
+
 </head>
 <body>
 
@@ -284,7 +293,7 @@
             <div class="stat-label">当前正式版本</div>
         </div>
         <div class="stat-item">
-            <div class="stat-num">SL / ST</div>
+            <div class="stat-num">S<sub>L</sub> / S<sub>T</sub></div>
             <div class="stat-label">预测目标</div>
         </div>
         <div class="stat-item">
@@ -292,7 +301,7 @@
             <div class="stat-label">适用域检测</div>
         </div>
         <div class="stat-item">
-            <div class="stat-num">SL / ST</div>
+            <div class="stat-num">S<sub>L</sub> / S<sub>T</sub></div>
             <div class="stat-label">双模型独立检测</div>
         </div>
     </div>
@@ -311,17 +320,17 @@
             <div class="feature-cell">
                 <div class="feature-icon">📊</div>
                 <div class="feature-title">CSV 批量预测</div>
-                <p class="feature-desc">支持标准 CSV 工况数据导入、逐行预测、进度显示与结果导出，并同步给出对应的 SL / ST 适用域状态。</p>
+                <p class="feature-desc">支持标准 CSV 工况数据导入、逐行预测、进度显示与结果导出，并同步给出对应的 S<sub>L</sub> / S<sub>T</sub> 适用域状态。</p>
             </div>
             <div class="feature-cell">
                 <div class="feature-icon">🛡️</div>
                 <div class="feature-title">AD 适用域检测</div>
-                <p class="feature-desc">针对 SL 与 ST 分别建立适用域检测器，采用 KNN 距离与马氏距离进行双重判定，识别训练数据覆盖区域与外推风险。</p>
+                <p class="feature-desc">针对 S<sub>L</sub> 与 S<sub>T</sub> 分别建立适用域检测器，采用 KNN 距离与马氏距离进行双重判定，识别训练数据覆盖区域与外推风险。</p>
             </div>
             <div class="feature-cell">
                 <div class="feature-icon">🔬</div>
                 <div class="feature-title">标况曲线与理论对比</div>
-                <p class="feature-desc">生成 SL–φ 与 ST–u′ 标况曲线，可叠加实验数据，并按需要显示 Zimont、Peters 理论曲线进行对比分析。</p>
+                <p class="feature-desc">生成 S<sub>L</sub>–φ 与 S<sub>T</sub>–u′ 标况曲线，可叠加实验数据，并按需要显示 Zimont、Peters 理论曲线进行对比分析。</p>
             </div>
             <div class="feature-cell">
                 <div class="feature-icon">📈</div>
@@ -393,9 +402,9 @@ document.addEventListener("DOMContentLoaded", () => {
                 comingSoon: false,
                 links: [
                     {
-                        name: "GitHub Releases · 下载 V4.0",
+                        name: "直接下载 V4.0 安装包",
                         icon: "↓",
-                        url: "https://github.com/wangzhongxin220/hydrogencombustionprediction/releases/tag/v4.0",
+                        url: "https://github.com/wangzhongxin220/hydrogencombustionprediction/releases/download/v4.0/HyBv_V4.0_Installer.exe",
                         code: "打开版本页即可下载安装包",
                         disabled: false
                     }
@@ -433,7 +442,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 isLatest: true,
                 items: [
                     { type: "feat", text: "正式版本：HyBv 氢气燃烧速度预测系统 V4.0" },
-                    { type: "feat", text: "完善层流燃烧速度（SL）与湍流燃烧速度（ST）独立预测流程" },
+                    { type: "feat", text: "完善层流燃烧速度（S<sub>L</sub>）与湍流燃烧速度（S<sub>T</sub>）独立预测流程" },
                     { type: "feat", text: "新增并完善 AD 适用域分析：KNN 距离 + 马氏距离双重判定" },
                     { type: "feat", text: "统一 AD 状态表达：Within AD / Outside AD，避免将适用域误解为预测置信度" },
                     { type: "feat", text: "完善批量预测、标况曲线与模型诊断功能" },
@@ -446,7 +455,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 isLatest: false,
                 items: [
                     { type: "feat", text: "内部重构与功能联调版本，仅用于研发测试" },
-                    { type: "feat", text: "验证 SL / ST 双独立 AD 检测流程及批量预测功能" },
+                    { type: "feat", text: "验证 S<sub>L</sub> / S<sub>T</sub> 双独立 AD 检测流程及批量预测功能" },
                     { type: "feat", text: "验证曲线平滑、模型诊断与界面交互" }
                 ]
             },
